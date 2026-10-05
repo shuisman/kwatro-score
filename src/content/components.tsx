@@ -42,7 +42,7 @@ export function Calc({ children }: { children: ReactNode }) {
 export function Toc({ items, label }: { items: [string, string][]; label: string }) {
   return (
     <nav className="my-6 rounded-2xl border border-border bg-surface p-4 text-sm" aria-label={label}>
-      <ol className="m-0! grid gap-1 sm:grid-cols-2">
+      <ol className="m-0! grid gap-x-10 gap-y-1 pl-6 sm:grid-cols-2">
         {items.map(([id, text]) => (
           <li key={id} className="m-0!">
             <a href={`#${id}`}>{text}</a>
