@@ -1,0 +1,141 @@
+# Kwatro: regels en punten tellen
+
+Kwatro is een vlot kaartspel voor 2 tot 4 spelers, bedacht door Gene Mackles. Je legt kaarten in een raster en scoort met rijtjes waarin alles gelijk of alles anders is. Hieronder leggen we het in eigen woorden uit.
+
+<Toc
+  label="Inhoud"
+  items={[
+    ['de-kaarten', 'De kaarten'],
+    ['voorbereiding', 'Voorbereiding'],
+    ['je-beurt', 'Je beurt'],
+    ['de-gouden-regel', 'De gouden regel'],
+    ['punten-tellen', 'Punten tellen'],
+    ['rekenvoorbeelden', 'Rekenvoorbeelden'],
+    ['jokers', 'Jokers'],
+    ['einde-van-het-spel', 'Einde van het spel'],
+    ['veelgemaakte-fouten', 'Veelgemaakte fouten'],
+    ['kwatro-score-gebruiken', 'Kwatro Score gebruiken'],
+  ]}
+/>
+
+## De kaarten
+
+Elke kaart heeft drie eigenschappen: een **kleur** (rood, blauw, groen of geel), een **vorm** (cirkel, vierkant, driehoek of kruis) en een **getal** van 1 tot 4. Het getal is ook het aantal punten dat de kaart waard is. Elke combinatie bestaat precies één keer: 4 × 4 × 4 = **64 kaarten**. Daarnaast zijn er **2 jokers**, die 0 punten waard zijn.
+
+<CardRow cards={[['red', 'circle', 1], ['blue', 'square', 2], ['green', 'triangle', 3], ['yellow', 'cross', 4], 'wild']}>
+  Vier voorbeeldkaarten en een joker (eigen tekeningen, niet het officiële ontwerp).
+</CardRow>
+
+## Voorbereiding
+
+1. Schud alle kaarten, inclusief de jokers.
+2. Iedereen krijgt 4 kaarten en houdt ze verborgen.
+3. De rest is de trekstapel. Draai de bovenste kaart open in het midden: daar begint het raster.
+4. De kleinste speler begint. Daarna gaat de beurt **met de klok mee**.
+
+## Je beurt
+
+Je kiest één van twee dingen:
+
+- **Kaarten spelen.** Leg 1 tot 4 kaarten in **één rij of één kolom**, aansluitend op het raster. Tel je punten en trek daarna weer aan tot 4 kaarten (zolang de stapel dat toelaat).
+- **Passen.** Leg eventueel een aantal kaarten onder de stapel en pak er evenveel nieuwe. Je scoort deze beurt 0 punten.
+
+De kaarten die je in één beurt legt, hoeven elkaar niet te raken, maar moeten wel in dezelfde lijn liggen en er mag geen gat in die lijn overblijven.
+
+## De gouden regel
+
+Een **lijn** is een rij of kolom van 2, 3 of 4 aaneengesloten kaarten. Kijk per eigenschap (kleur, vorm, getal): die moet in de hele lijn **overal gelijk** óf **overal verschillend** zijn. Een lijn is nooit langer dan 4 kaarten. Een volle lijn van 4 heet een **kwatro**.
+
+<CardRow ok cards={[['green', 'circle', 3], ['green', 'square', 3], ['green', 'triangle', 3]]}>
+  Goed: kleur overal gelijk (groen), vorm overal anders, getal overal gelijk (3).
+</CardRow>
+
+<CardRow ok cards={[['red', 'circle', 1], ['blue', 'circle', 2], ['green', 'circle', 3], ['yellow', 'circle', 4]]}>
+  Goed, en een kwatro: kleur overal anders, vorm overal gelijk, getal overal anders.
+</CardRow>
+
+<CardRow ok={false} cards={[['blue', 'square', 2], ['red', 'triangle', 2], ['green', 'cross', 4]]}>
+  Fout: twee keer een 2 en één keer een 4. Het getal is niet overal gelijk en niet overal anders.
+</CardRow>
+
+Leg je een kaart die ook een lijn in de andere richting vormt of verlengt, dan moet die lijn óók kloppen.
+
+## Punten tellen
+
+Je scoort direct na je beurt. Zo tel je:
+
+1. **Basis:** kijk naar elke lijn die je deze beurt hebt gemaakt of langer gemaakt. Tel van elke lijn de waarde van **alle** kaarten op, dus ook de kaarten die er al lagen. Tel daarna alle lijnen bij elkaar op.
+2. Ligt een kaart in twee lijnen (een rij én een kolom), dan telt hij **twee keer** mee.
+3. **Verdubbelen:** je hele beurtscore gaat ×2 voor
+   - elke **kwatro** die je deze beurt maakt (maak je er twee, dan ×2 ×2 = ×4);
+   - het spelen van **alle 4 kaarten** uit je hand;
+   - het spelen van je **laatste kaart** als de trekstapel op is (dat beëindigt het spel).
+
+De verdubbelingen stapelen: ze gelden voor de hele beurt, niet alleen voor de kwatro.
+
+## Rekenvoorbeelden
+
+### Een lijn van drie
+
+Je legt een groen vierkant 3 naast een groene cirkel 3 en een groene driehoek 3.
+
+<Calc>3 + 3 + 3 = **9 punten**</Calc>
+
+### Eén kaart in twee lijnen
+
+Je legt een rode driehoek 3 zó dat hij een rij maakt met een rode cirkel 1 en een kolom met een blauwe driehoek 2. Je hebt twee lijnen gemaakt; de 3 telt in allebei.
+
+<Calc>(1 + 3) + (2 + 3) = **9 punten**</Calc>
+
+### Een kwatro afmaken
+
+In een rij liggen rood 1, blauw 2 en groen 3, allemaal cirkels. Jij legt een gele cirkel 4 erbij: een kwatro van 10 punten. Onder je kaart ligt toevallig een geel kruis 4, dus je maakt ook een lijn van twee (4 + 4).
+
+<Calc>
+  (1 + 2 + 3 + 4) + (4 + 4) = 18
+
+  18 × 2 (kwatro) = **36 punten**
+</Calc>
+
+### Alle vier kaarten in één keer
+
+Je legt vier 4-en in een rij, elk in een andere kleur en vorm. Vier kaarten in één lijn is altijd een kwatro, en je speelt je hele hand.
+
+<Calc>
+  4 + 4 + 4 + 4 = 16
+
+  16 × 2 (kwatro) × 2 (alle 4 kaarten) = **64 punten**
+</Calc>
+
+### De laatste kaart
+
+De stapel is op en je hebt nog één kaart. Je maakt er een lijn van drie mee met 2 + 2 + 2. Het spel is meteen afgelopen.
+
+<Calc>
+  2 + 2 + 2 = 6
+
+  6 × 2 (laatste kaart) = **12 punten**
+</Calc>
+
+## Jokers
+
+- Een joker mag elke kaart vervangen en is 0 punten waard.
+- Er moet altijd één echte kaart bestaan die op die plek past, ook als de joker in een rij én een kolom ligt.
+- Een kwatro met een joker erin telt gewoon als kwatro en verdubbelt je beurt.
+- Heb je een kaart die op de plek van een joker past, dan mag je die vóór je beurt omruilen. Dat kost je geen beurt en levert geen punten op.
+
+## Einde van het spel
+
+Het spel stopt **meteen** zodra de trekstapel op is en iemand zijn laatste kaart speelt. Die beurt telt dubbel. De anderen krijgen geen extra beurt en hun overgebleven kaarten tellen niet mee. **Wie de meeste punten heeft, wint.** De regels noemen geen beslissing bij gelijkspel; in Kwatro Score delen de spelers dan de winst.
+
+## Veelgemaakte fouten
+
+- **Alleen de nieuwe kaarten tellen.** Nee: tel alle kaarten in de lijn, ook die er al lagen.
+- **Alleen de kwatro verdubbelen.** Nee: de hele beurtscore gaat ×2.
+- **Kaarten in twee rijen tegelijk leggen.** Alle kaarten van één beurt liggen in één rij of kolom.
+- **Een lijn van 5 maken.** Kan niet: na een kwatro is een lijn vol.
+- **Een kruisende lijn vergeten.** Vormt je kaart ook een lijn in de andere richting? Die telt mee en moet ook kloppen.
+
+## Kwatro Score gebruiken
+
+Na elke beurt tik je de **totale beurtscore** in, inclusief eventuele verdubbelingen. De app houdt de stand bij, laat zien wie er aan de beurt is en wie daarna, en maakt aan het eind een uitslag om te delen.

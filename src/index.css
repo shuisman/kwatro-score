@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f7f3ec;
+  --surface: #ffffff;
+  --surface-2: #efe9df;
+  --text: #1d1a16;
+  --muted: #6b6359;
+  --border: #e0d8cb;
+  --primary: #1f3a5f;
+  --primary-fg: #ffffff;
+  --primary-soft: #dde6f2;
+  --danger: #b42318;
+  --card: #1c1c1e;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #16130f;
+  --surface: #211d18;
+  --surface-2: #2c2721;
+  --text: #f3eee6;
+  --muted: #a89f93;
+  --border: #3a342c;
+  --primary: #9dbbe6;
+  --primary-fg: #10213a;
+  --primary-soft: #23324a;
+  --danger: #f97066;
+  --card: #0f0f10;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+  --color-danger: var(--danger);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+/* Tabular digits for every score. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+
+dialog[open] {
+  animation: pop 0.15s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Long-form content (rules, about). In a layer so utilities win; .not-prose opts a block out. */
+@layer components {
+  .prose-k :where(h1):not(:where(.not-prose *)) {
+    font-size: 2.25rem;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+  }
+  .prose-k :where(h1 + p):not(:where(.not-prose *)) {
+    font-size: 1.125rem;
+    color: var(--muted);
+  }
+  .prose-k :where(h2):not(:where(.not-prose *)) {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 5rem;
+  }
+  .prose-k :where(h3):not(:where(.not-prose *)) {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-k :where(p, li):not(:where(.not-prose *)) {
+    line-height: 1.65;
+  }
+  .prose-k :where(p):not(:where(.not-prose *)) {
+    margin-bottom: 0.875rem;
+  }
+  .prose-k :where(ul, ol):not(:where(.not-prose *)) {
+    margin: 0 0 1rem 1.25rem;
+  }
+  .prose-k :where(ul):not(:where(.not-prose *)) {
+    list-style: disc;
+  }
+  .prose-k :where(ol):not(:where(.not-prose *)) {
+    list-style: decimal;
+  }
+  .prose-k :where(li):not(:where(.not-prose *)) {
+    margin-bottom: 0.375rem;
+  }
+  .prose-k :where(strong) {
+    font-weight: 700;
+  }
+  .prose-k :where(a:not([class])) {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}

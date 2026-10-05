@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="<!--lang-->">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title><!--title--></title>
+    <!--head-->
+    <meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/kwatro-score/icon.svg" />
+    <link rel="apple-touch-icon" href="/kwatro-score/apple-touch-icon.png" />
+    <link rel="manifest" href="/kwatro-score/manifest.webmanifest" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('kwatro.theme');
+          var dark = t === 'dark' || ((!t || t === 'system') && matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+# Kwatro: rules and scoring
+
+Kwatro is a quick card game for 2 to 4 players, designed by Gene Mackles. You place cards in a grid and score with lines in which everything is either the same or different. Below we explain it in our own words.
+
+<Toc
+  label="Contents"
+  items={[
+    ['the-cards', 'The cards'],
+    ['setup', 'Setup'],
+    ['your-turn', 'Your turn'],
+    ['the-golden-rule', 'The golden rule'],
+    ['scoring', 'Scoring'],
+    ['worked-examples', 'Worked examples'],
+    ['wild-cards', 'Wild cards'],
+    ['end-of-the-game', 'End of the game'],
+    ['common-mistakes', 'Common mistakes'],
+    ['using-kwatro-score', 'Using Kwatro Score'],
+  ]}
+/>
+
+## The cards
+
+Every card has three properties: a **colour** (red, blue, green or yellow), a **shape** (circle, square, triangle or cross) and a **number** from 1 to 4. The number is also the card’s point value. Every combination exists exactly once: 4 × 4 × 4 = **64 cards**. There are also **2 wild cards**, worth 0 points.
+
+<CardRow cards={[['red', 'circle', 1], ['blue', 'square', 2], ['green', 'triangle', 3], ['yellow', 'cross', 4], 'wild']}>
+  Four sample cards and a wild card (our own drawings, not the official design).
+</CardRow>
+
+## Setup
+
+1. Shuffle all cards, including the wild cards.
+2. Everyone gets 4 cards and keeps them hidden.
+3. The rest is the draw pile. Turn the top card face up in the middle: the grid starts there.
+4. The smallest player starts. Play then goes **clockwise**.
+
+## Your turn
+
+You choose one of two things:
+
+- **Play cards.** Place 1 to 4 cards in **a single row or a single column**, connected to the grid. Count your points, then draw back up to 4 cards (as long as the pile allows).
+- **Pass.** Optionally put some cards under the pile and take the same number of new ones. You score 0 this turn.
+
+The cards you play in one turn don’t have to touch each other, but they must be in the same line, and no gap may remain in that line.
+
+## The golden rule
+
+A **line** is a row or column of 2, 3 or 4 adjacent cards. Check each property (colour, shape, number): across the whole line it must be **all the same** or **all different**. A line is never longer than 4 cards. A full line of 4 is called a **kwatro**.
+
+<CardRow ok cards={[['green', 'circle', 3], ['green', 'square', 3], ['green', 'triangle', 3]]}>
+  Fine: colour all the same (green), shape all different, number all the same (3).
+</CardRow>
+
+<CardRow ok cards={[['red', 'circle', 1], ['blue', 'circle', 2], ['green', 'circle', 3], ['yellow', 'circle', 4]]}>
+  Fine, and a kwatro: colour all different, shape all the same, number all different.
+</CardRow>
+
+<CardRow ok={false} cards={[['blue', 'square', 2], ['red', 'triangle', 2], ['green', 'cross', 4]]}>
+  Not allowed: two 2s and one 4. The numbers are neither all the same nor all different.
+</CardRow>
+
+If a card you place also forms or extends a line in the other direction, that line must be valid too.
+
+## Scoring
+
+You score right after your turn. This is how:
+
+1. **Base:** look at every line you created or extended this turn. For each line, add up the value of **all** its cards, including the ones that were already there. Then add up all those lines.
+2. A card that lies in two lines (a row and a column) counts **twice**.
+3. **Doubling:** your whole turn score goes ×2 for
+   - every **kwatro** you complete this turn (two of them means ×2 ×2 = ×4);
+   - playing **all 4 cards** from your hand;
+   - playing your **last card** when the draw pile is empty (this ends the game).
+
+Doublings stack: they apply to the whole turn, not just to the kwatro.
+
+## Worked examples
+
+### A line of three
+
+You place a green square 3 next to a green circle 3 and a green triangle 3.
+
+<Calc>3 + 3 + 3 = **9 points**</Calc>
+
+### One card in two lines
+
+You place a red triangle 3 so that it forms a row with a red circle 1 and a column with a blue triangle 2. You made two lines; the 3 counts in both.
+
+<Calc>(1 + 3) + (2 + 3) = **9 points**</Calc>
+
+### Completing a kwatro
+
+A row holds red 1, blue 2 and green 3, all circles. You add a yellow circle 4: a kwatro worth 10. Below your card there happens to be a yellow cross 4, so you also make a line of two (4 + 4).
+
+<Calc>
+  (1 + 2 + 3 + 4) + (4 + 4) = 18
+
+  18 × 2 (kwatro) = **36 points**
+</Calc>
+
+### All four cards at once
+
+You place four 4s in a row, each with a different colour and shape. Four cards in one line is always a kwatro, and you play your whole hand.
+
+<Calc>
+  4 + 4 + 4 + 4 = 16
+
+  16 × 2 (kwatro) × 2 (all 4 cards) = **64 points**
+</Calc>
+
+### The last card
+
+The pile is empty and you have one card left. You use it to make a line of three: 2 + 2 + 2. The game ends immediately.
+
+<Calc>
+  2 + 2 + 2 = 6
+
+  6 × 2 (last card) = **12 points**
+</Calc>
+
+## Wild cards
+
+- A wild card can stand in for any card and is worth 0 points.
+- There must always be one real card that would fit in its place, even if the wild lies in a row and a column.
+- A kwatro that contains a wild card still counts as a kwatro and doubles your turn.
+- If you hold a card that fits in a wild card’s place, you may swap it before your turn. That doesn’t use your turn and scores nothing.
+
+## End of the game
+
+The game ends **immediately** when the draw pile is empty and someone plays their last card. That turn counts double. The others get no extra turn and their remaining cards don’t count. **The highest total wins.** The rules have no tie-breaker; in Kwatro Score tied players share the win.
+
+## Common mistakes
+
+- **Counting only the new cards.** No: count every card in the line, including the ones already there.
+- **Doubling only the kwatro.** No: the whole turn score goes ×2.
+- **Placing cards in two rows at once.** All cards of one turn go in one row or column.
+- **Making a line of 5.** Not possible: after a kwatro a line is full.
+- **Forgetting a crossing line.** Does your card also form a line in the other direction? It scores, and it must be valid too.
+
+## Using Kwatro Score
+
+After each turn, tap in the **total turn score**, including any doubling. The app keeps the standings, shows whose turn it is and who’s next, and creates a result to share at the end.
